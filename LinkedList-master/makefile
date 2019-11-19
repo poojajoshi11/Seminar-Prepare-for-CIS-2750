@@ -5,7 +5,7 @@ program: main.o Car.o ListFunctions.o
 main.o: main.c 
 	gcc -c main.c
 
-LinkedList:  ListFunctions.c LinkedListAPI.h
+LinkedList.o:  ListFunctions.c LinkedListAPI.h
 	gcc -Wall -c ListFunctions.c
 
 Car.o:  Car.c car.h
