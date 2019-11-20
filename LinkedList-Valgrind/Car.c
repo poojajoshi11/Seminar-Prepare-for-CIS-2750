@@ -1,4 +1,4 @@
-#include "car.h"
+#include "Car.h"
 
 
 
@@ -24,9 +24,10 @@ int compare(const void *first,const void *second){
 	return 1;
 }
 
-void printNode(void *toBePrinted){
+char* printNode(void *toBePrinted){
 	Car * toBe= (Car*)toBePrinted;
 	printf("%c %c %d\n", toBe->dir, toBe->dirTo, toBe->arrival);
+	return "";
 }
 
 void delete(void *toBeDeleted){

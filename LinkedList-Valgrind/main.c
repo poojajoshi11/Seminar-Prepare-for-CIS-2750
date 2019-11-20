@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "LinkedListAPI.h"
-#include "car.h"
+#include "Car.h"
 
 int main()
 {
@@ -11,8 +11,8 @@ int main()
 	List * WestList = initializeList(&printNode, &delete, &compare);
 	// Text file containing car and direction info
 	FILE * fp = NULL;
-	fp = fopen("text.txt","r");
- 
+	fp = fopen("textFile.txt","r");
+		
 	while (!feof(fp))
 	{
 		Car* temp = malloc(sizeof(Car*));
@@ -34,7 +34,8 @@ int main()
 			insertSorted(WestList, temp);
 		}
   		
-	}
+	}		
+	
 	printf("NorthList:\n");
 	printForward(NorthList);
 	printf("EastList:\n");
@@ -49,6 +50,7 @@ int main()
 	int listCounter = 1;
 	List * current = NULL;
 	printf("\nSimulation begins");
+	
 	while(NorthList->head != NULL|| SouthList->head != NULL||EastList->head!= NULL||WestList->head!= NULL) {
 		if(listCounter == 1) {
 			current = NorthList;
@@ -68,7 +70,7 @@ int main()
 		}
 		
 		int green = timer + 10;
-
+		
 		while(timer <= green){
 			if(current->head != NULL){
 				Car * currentCar = (Car*)(current->head->data);
@@ -85,7 +87,7 @@ int main()
 					}
 					printf("\nCar passing: \n");
 					printNode(currentCar);
-					deleteNodeFromList(current, currentCar);
+					deleteDataFromList(current, currentCar);
 					printf("Timer: %d\n", timer);
 					printf("Remaining cars:\n");
 					if(current->head!= NULL)
@@ -99,9 +101,11 @@ int main()
 						printf("Current lane is empty\n");
 					}
 				}
-				else	{
+				else
+				{
 					timer++;
 				}
+				free(currentCar);
 			}
 			else {
 				timer+= (green-timer);
@@ -117,7 +121,15 @@ int main()
 		}	
 	}
 	printf("End of simulation\n");
-	
+	/*
+	fclose(fp);
+	fp = NULL;
+		
+	freeList(NorthList);
+	freeList(SouthList);
+	freeList(WestList);
+	freeList(EastList);
+	*/
 }
 
 

@@ -9,5 +9,5 @@ typedef struct car{
 
 int compare(const void *first,const void *second);
 Car* initializeCar(char di, char to, int arr);
-void printNode(void *toBePrinted);
+char* printNode(void *toBePrinted);
 void delete(void *toBeDeleted);

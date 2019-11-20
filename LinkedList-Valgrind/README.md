@@ -6,6 +6,13 @@ Car.c : A file that has all the car related functions
 
 ListFunctions.c: A file with all the required doubly linked list functions, plus insertSorted()
 
-makefile: compiles and runs code at the same time.
-To run:
+makefile: compiles all the .c files.
+
+To compile:
 make
+
+To run valgrind:
+valgrind --leak-check=full ./program
+
+To simply run the executable:
+./program
